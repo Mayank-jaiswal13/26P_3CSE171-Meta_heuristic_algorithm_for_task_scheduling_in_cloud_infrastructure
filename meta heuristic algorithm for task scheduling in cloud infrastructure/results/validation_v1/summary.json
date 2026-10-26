@@ -1,0 +1,600 @@
+{
+  "workload": {
+    "tasks": 100,
+    "vms": 10,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "repeats": 3,
+  "search": {
+    "population": 20,
+    "iterations": 50,
+    "hybrid_stagnation_interval": 10,
+    "weights": [
+      0.5,
+      0.25,
+      0.25
+    ]
+  },
+  "energy_model": "max_power while busy plus idle_power until makespan; illustrative proxy, not measured energy",
+  "pareto_front": "pareto_front.csv contains non-dominated hybrid candidates found by separate weighted-objective runs",
+  "results": {
+    "FCFS": {
+      "makespan_seconds": {
+        "count": 5,
+        "mean": 53.13106666666667,
+        "stddev": 10.390248955203674
+      },
+      "load_imbalance_seconds": {
+        "count": 5,
+        "mean": 3.147446529604566,
+        "stddev": 1.4518472663595612
+      },
+      "energy_proxy_joules": {
+        "count": 5,
+        "mean": 58763.295,
+        "stddev": 8221.854569928988
+      },
+      "fitness": {
+        "count": 5,
+        "mean": 0.04040054953179748,
+        "stddev": 0.003629517260587419
+      }
+    },
+    "Round Robin": {
+      "makespan_seconds": {
+        "count": 5,
+        "mean": 114.77853333333333,
+        "stddev": 25.21849588042695
+      },
+      "load_imbalance_seconds": {
+        "count": 5,
+        "mean": 27.769827796690898,
+        "stddev": 7.1906785041445715
+      },
+      "energy_proxy_joules": {
+        "count": 5,
+        "mean": 97788.60116666666,
+        "stddev": 19955.71221194399
+      },
+      "fitness": {
+        "count": 5,
+        "mean": 0.08550159133123143,
+        "stddev": 0.00826699040149148
+      }
+    },
+    "GA": {
+      "makespan_seconds": {
+        "count": 15,
+        "mean": 49.912333333333336,
+        "stddev": 8.631016887859653
+      },
+      "load_imbalance_seconds": {
+        "count": 15,
+        "mean": 2.8249264918238755,
+        "stddev": 1.3426161669427708
+      },
+      "energy_proxy_joules": {
+        "count": 15,
+        "mean": 56618.27416666667,
+        "stddev": 6958.178701658421
+      },
+      "fitness": {
+        "count": 15,
+        "mean": 0.03836306255533821,
+        "stddev": 0.0029320908996802813
+      }
+    },
+    "PSO": {
+      "makespan_seconds": {
+        "count": 15,
+        "mean": 49.49751111111111,
+        "stddev": 8.569378478579166
+      },
+      "load_imbalance_seconds": {
+        "count": 15,
+        "mean": 2.0115153170551943,
+        "stddev": 0.9270147413189892
+      },
+      "energy_proxy_joules": {
+        "count": 15,
+        "mean": 56535.01144444445,
+        "stddev": 7053.187187664829
+      },
+      "fitness": {
+        "count": 15,
+        "mean": 0.03794110429887259,
+        "stddev": 0.0030106766923998795
+      }
+    },
+    "Hybrid GA-PSO": {
+      "makespan_seconds": {
+        "count": 15,
+        "mean": 47.12074444444444,
+        "stddev": 7.569245727348771
+      },
+      "load_imbalance_seconds": {
+        "count": 15,
+        "mean": 0.5428384885460328,
+        "stddev": 0.147265509531266
+      },
+      "energy_proxy_joules": {
+        "count": 15,
+        "mean": 55382.539833333336,
+        "stddev": 6559.617840635845
+      },
+      "fitness": {
+        "count": 15,
+        "mean": 0.03620756229280757,
+        "stddev": 0.0028523709623528575
+      }
+    }
+  },
+  "by_workload_seed": {
+    "42": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 62.48799999999999,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 4.217861048268421,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 64959.38416666666,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.04492154011994702,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 128.47,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 33.32420950026839,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 111816.00333333333,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.09352261485286102,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 60.143777777777785,
+          "stddev": 1.0146413098500928
+        },
+        "load_imbalance_seconds": {
+          "mean": 4.326089029340905,
+          "stddev": 0.8483593927636728
+        },
+        "energy_proxy_joules": {
+          "mean": 62339.34444444445,
+          "stddev": 767.6992668894197
+        },
+        "fitness": {
+          "mean": 0.04326018278515967,
+          "stddev": 0.000682447918356804
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 59.05855555555556,
+          "stddev": 0.26667282400298875
+        },
+        "load_imbalance_seconds": {
+          "mean": 2.8089565860572585,
+          "stddev": 0.2293923407154063
+        },
+        "energy_proxy_joules": {
+          "mean": 62240.617777777785,
+          "stddev": 226.5243203057219
+        },
+        "fitness": {
+          "mean": 0.04235879978178458,
+          "stddev": 0.00013584377356999812
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 56.38333333333333,
+          "stddev": 0.15114084674751307
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.7382928498270023,
+          "stddev": 0.07964378114959755
+        },
+        "energy_proxy_joules": {
+          "mean": 61195.67472222222,
+          "stddev": 20.048357480211283
+        },
+        "fitness": {
+          "mean": 0.040361216525529146,
+          "stddev": 9.016419470385959e-05
+        }
+      }
+    },
+    "43": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 62.268,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 4.936410139632511,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 66020.84,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.04441532938763366,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 124.02400000000002,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 28.436158139007926,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 101811.86666666667,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.08689541112943695,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 54.59377777777778,
+          "stddev": 0.6852748209637615
+        },
+        "load_imbalance_seconds": {
+          "mean": 3.2551423794371215,
+          "stddev": 0.4931844694318016
+        },
+        "energy_proxy_joules": {
+          "mean": 61607.28611111111,
+          "stddev": 453.77842937178104
+        },
+        "fitness": {
+          "mean": 0.039440161590082415,
+          "stddev": 0.000528625990932152
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 55.519777777777776,
+          "stddev": 1.276936186616758
+        },
+        "load_imbalance_seconds": {
+          "mean": 2.842888331808898,
+          "stddev": 0.6483697519719962
+        },
+        "energy_proxy_joules": {
+          "mean": 62352.215000000004,
+          "stddev": 728.0796974585851
+        },
+        "fitness": {
+          "mean": 0.03993625083283254,
+          "stddev": 0.0009057499990064944
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 51.55155555555555,
+          "stddev": 0.19902081285789602
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.45925216463979285,
+          "stddev": 0.07900793511224924
+        },
+        "energy_proxy_joules": {
+          "mean": 60407.23027777777,
+          "stddev": 124.56723020479843
+        },
+        "fitness": {
+          "mean": 0.03706939344374494,
+          "stddev": 0.00013573539306806665
+        }
+      }
+    },
+    "44": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 50.162000000000006,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 2.684258742340861,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 58289.51916666667,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.03576863287962527,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 127.036,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 29.313557256194994,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 109868.905,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.08869428623439134,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 48.928444444444445,
+          "stddev": 0.46410482000365205
+        },
+        "load_imbalance_seconds": {
+          "mean": 3.4883554723555217,
+          "stddev": 0.650106860850065
+        },
+        "energy_proxy_joules": {
+          "mean": 57405.194444444445,
+          "stddev": 796.3612879884599
+        },
+        "fitness": {
+          "mean": 0.03520207512569906,
+          "stddev": 0.0003408067769239278
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 47.792,
+          "stddev": 0.6095397170543231
+        },
+        "load_imbalance_seconds": {
+          "mean": 1.8342247692027043,
+          "stddev": 0.3285257707727061
+        },
+        "energy_proxy_joules": {
+          "mean": 57130.741944444446,
+          "stddev": 251.8288248772215
+        },
+        "fitness": {
+          "mean": 0.03421297427904245,
+          "stddev": 0.000415637350001851
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 45.1875,
+          "stddev": 0.06926880009547687
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.5802920222978145,
+          "stddev": 0.04750046652903787
+        },
+        "energy_proxy_joules": {
+          "mean": 55471.30861111111,
+          "stddev": 54.913299834971816
+        },
+        "fitness": {
+          "mean": 0.032352920299161134,
+          "stddev": 3.832841996027004e-05
+        }
+      }
+    },
+    "45": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 34.42733333333334,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.7028126747813633,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 43260.370833333334,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.038106222687769524,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 64.49066666666667,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 14.020800115552529,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 58450.434166666666,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.06956019313472155,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 34.42733333333334,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.7028126747813633,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 43260.370833333334,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.038106222687769524,
+          "stddev": 0.0
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 34.252,
+          "stddev": 0.24795877793608426
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.49091076906881537,
+          "stddev": 0.08968700955342451
+        },
+        "energy_proxy_joules": {
+          "mean": 43132.09805555556,
+          "stddev": 123.25829351807425
+        },
+        "fitness": {
+          "mean": 0.03786185915168395,
+          "stddev": 0.00025129930205334395
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 33.889833333333335,
+          "stddev": 0.11902964149973778
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.387894630240475,
+          "stddev": 0.039258286422466614
+        },
+        "energy_proxy_joules": {
+          "mean": 42977.475,
+          "stddev": 67.41673902962948
+        },
+        "fitness": {
+          "mean": 0.03751228253477169,
+          "stddev": 0.00012166414279740866
+        }
+      }
+    },
+    "46": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 56.31,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 3.195890042999672,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 61286.36083333333,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.038791022584011944,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 129.87199999999999,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 33.754413972430655,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 106995.79666666666,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.08883545130474632,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 51.468333333333334,
+          "stddev": 0.9924690871200413
+        },
+        "load_imbalance_seconds": {
+          "mean": 2.3522329032044658,
+          "stddev": 0.14828479545716267
+        },
+        "energy_proxy_joules": {
+          "mean": 58479.175,
+          "stddev": 717.7211783652999
+        },
+        "fitness": {
+          "mean": 0.03580667058798039,
+          "stddev": 0.0006241621155832703
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 50.86522222222222,
+          "stddev": 0.38763044001302555
+        },
+        "load_imbalance_seconds": {
+          "mean": 2.0805961291382946,
+          "stddev": 0.17963455858203978
+        },
+        "energy_proxy_joules": {
+          "mean": 57819.38444444445,
+          "stddev": 202.05658647317784
+        },
+        "fitness": {
+          "mean": 0.03533563744901943,
+          "stddev": 0.0002362087590322006
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 48.591499999999996,
+          "stddev": 0.027937430089397308
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.5484607757250792,
+          "stddev": 0.14636154211254765
+        },
+        "energy_proxy_joules": {
+          "mean": 56861.01055555556,
+          "stddev": 3.356601451236772
+        },
+        "fitness": {
+          "mean": 0.03374199866083091,
+          "stddev": 4.599319493465102e-05
+        }
+      }
+    }
+  }
+}
