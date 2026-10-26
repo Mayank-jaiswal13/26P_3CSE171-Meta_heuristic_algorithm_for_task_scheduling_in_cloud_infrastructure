@@ -1,0 +1,228 @@
+{
+  "workload": {
+    "tasks": 100,
+    "vms": 10,
+    "seeds": [
+      42
+    ]
+  },
+  "repeats": 10,
+  "search": {
+    "population": 40,
+    "iterations": 150,
+    "hybrid_stagnation_interval": 10,
+    "weights": [
+      0.5,
+      0.25,
+      0.25
+    ]
+  },
+  "energy_model": "max_power while busy plus idle_power until makespan; illustrative proxy, not measured energy",
+  "pareto_front": "pareto_front.csv contains non-dominated hybrid candidates found by separate weighted-objective runs",
+  "results": {
+    "FCFS": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 62.48799999999999,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 4.2178610482684205,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 64959.38416666667,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.04492154011994702,
+        "stddev": 0.0
+      }
+    },
+    "Round Robin": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 128.47,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 33.32420950026839,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 111816.00333333334,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.09352261485286102,
+        "stddev": 0.0
+      }
+    },
+    "GA": {
+      "makespan_seconds": {
+        "count": 10,
+        "mean": 58.986466666666665,
+        "stddev": 0.5395789346024026
+      },
+      "load_imbalance_seconds": {
+        "count": 10,
+        "mean": 3.5453424200112806,
+        "stddev": 0.7027363582269764
+      },
+      "energy_proxy_joules": {
+        "count": 10,
+        "mean": 62570.79141666667,
+        "stddev": 419.02389703118325
+      },
+      "fitness": {
+        "count": 10,
+        "mean": 0.0425717448524838,
+        "stddev": 0.0004231489020852465
+      }
+    },
+    "PSO": {
+      "makespan_seconds": {
+        "count": 10,
+        "mean": 57.3691,
+        "stddev": 0.5156195205769456
+      },
+      "load_imbalance_seconds": {
+        "count": 10,
+        "mean": 1.537395292169302,
+        "stddev": 0.26791492581933557
+      },
+      "energy_proxy_joules": {
+        "count": 10,
+        "mean": 61724.11958333333,
+        "stddev": 407.4809336698839
+      },
+      "fitness": {
+        "count": 10,
+        "mean": 0.0411370114955161,
+        "stddev": 0.00037487896799029576
+      }
+    },
+    "Hybrid GA-PSO": {
+      "makespan_seconds": {
+        "count": 10,
+        "mean": 55.86895,
+        "stddev": 0.13383497404556804
+      },
+      "load_imbalance_seconds": {
+        "count": 10,
+        "mean": 0.5712991798405497,
+        "stddev": 0.09168423287545291
+      },
+      "energy_proxy_joules": {
+        "count": 10,
+        "mean": 60957.96466666667,
+        "stddev": 101.28239123389122
+      },
+      "fitness": {
+        "count": 10,
+        "mean": 0.04002430460779577,
+        "stddev": 8.689951013856656e-05
+      }
+    }
+  },
+  "by_workload_seed": {
+    "42": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 62.48799999999999,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 4.2178610482684205,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 64959.38416666667,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.04492154011994702,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 128.47,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 33.32420950026839,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 111816.00333333334,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.09352261485286102,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 58.986466666666665,
+          "stddev": 0.5395789346024026
+        },
+        "load_imbalance_seconds": {
+          "mean": 3.5453424200112806,
+          "stddev": 0.7027363582269764
+        },
+        "energy_proxy_joules": {
+          "mean": 62570.79141666667,
+          "stddev": 419.02389703118325
+        },
+        "fitness": {
+          "mean": 0.0425717448524838,
+          "stddev": 0.0004231489020852465
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 57.3691,
+          "stddev": 0.5156195205769456
+        },
+        "load_imbalance_seconds": {
+          "mean": 1.537395292169302,
+          "stddev": 0.26791492581933557
+        },
+        "energy_proxy_joules": {
+          "mean": 61724.11958333333,
+          "stddev": 407.4809336698839
+        },
+        "fitness": {
+          "mean": 0.0411370114955161,
+          "stddev": 0.00037487896799029576
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 55.86895,
+          "stddev": 0.13383497404556804
+        },
+        "load_imbalance_seconds": {
+          "mean": 0.5712991798405497,
+          "stddev": 0.09168423287545291
+        },
+        "energy_proxy_joules": {
+          "mean": 60957.96466666667,
+          "stddev": 101.28239123389122
+        },
+        "fitness": {
+          "mean": 0.04002430460779577,
+          "stddev": 8.689951013856656e-05
+        }
+      }
+    }
+  }
+}
