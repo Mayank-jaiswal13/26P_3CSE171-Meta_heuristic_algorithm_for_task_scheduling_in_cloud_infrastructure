@@ -1,0 +1,228 @@
+{
+  "workload": {
+    "tasks": 20,
+    "vms": 4,
+    "seeds": [
+      42
+    ]
+  },
+  "repeats": 1,
+  "search": {
+    "population": 10,
+    "iterations": 10,
+    "hybrid_stagnation_interval": 10,
+    "weights": [
+      0.5,
+      0.25,
+      0.25
+    ]
+  },
+  "energy_model": "max_power while busy plus idle_power until makespan; illustrative proxy, not measured energy",
+  "pareto_front": "pareto_front.csv contains non-dominated hybrid candidates found by separate weighted-objective runs",
+  "results": {
+    "FCFS": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 40.018,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 5.658204241900036,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 17512.905,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.1636021882356644,
+        "stddev": 0.0
+      }
+    },
+    "Round Robin": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 44.78266666666667,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 11.398451215455156,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 18470.073333333334,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.18671881392972886,
+        "stddev": 0.0
+      }
+    },
+    "GA": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 33.906,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 5.120452787596036,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 14791.503333333332,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.13892203181010443,
+        "stddev": 0.0
+      }
+    },
+    "PSO": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 35.27333333333333,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 6.6080976014070965,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 14970.818333333335,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.14507606925633482,
+        "stddev": 0.0
+      }
+    },
+    "Hybrid GA-PSO": {
+      "makespan_seconds": {
+        "count": 1,
+        "mean": 32.062666666666665,
+        "stddev": 0.0
+      },
+      "load_imbalance_seconds": {
+        "count": 1,
+        "mean": 1.0804766020141292,
+        "stddev": 0.0
+      },
+      "energy_proxy_joules": {
+        "count": 1,
+        "mean": 15046.085,
+        "stddev": 0.0
+      },
+      "fitness": {
+        "count": 1,
+        "mean": 0.1292860016925557,
+        "stddev": 0.0
+      }
+    }
+  },
+  "by_workload_seed": {
+    "42": {
+      "FCFS": {
+        "makespan_seconds": {
+          "mean": 40.018,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 5.658204241900036,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 17512.905,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.1636021882356644,
+          "stddev": 0.0
+        }
+      },
+      "Round Robin": {
+        "makespan_seconds": {
+          "mean": 44.78266666666667,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 11.398451215455156,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 18470.073333333334,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.18671881392972886,
+          "stddev": 0.0
+        }
+      },
+      "GA": {
+        "makespan_seconds": {
+          "mean": 33.906,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 5.120452787596036,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 14791.503333333332,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.13892203181010443,
+          "stddev": 0.0
+        }
+      },
+      "PSO": {
+        "makespan_seconds": {
+          "mean": 35.27333333333333,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 6.6080976014070965,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 14970.818333333335,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.14507606925633482,
+          "stddev": 0.0
+        }
+      },
+      "Hybrid GA-PSO": {
+        "makespan_seconds": {
+          "mean": 32.062666666666665,
+          "stddev": 0.0
+        },
+        "load_imbalance_seconds": {
+          "mean": 1.0804766020141292,
+          "stddev": 0.0
+        },
+        "energy_proxy_joules": {
+          "mean": 15046.085,
+          "stddev": 0.0
+        },
+        "fitness": {
+          "mean": 0.1292860016925557,
+          "stddev": 0.0
+        }
+      }
+    }
+  }
+}
