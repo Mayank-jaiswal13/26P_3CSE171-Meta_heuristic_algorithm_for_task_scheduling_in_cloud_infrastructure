@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Cloud Task Scheduler</title>
+  <style>
+    :root { color-scheme: light; --ink: #182230; --muted: #64748b; --line: #dce3eb; --blue: #2458d3; --paper: #f5f7fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 system-ui, Segoe UI, sans-serif; }
+    main { max-width: 1080px; margin: 0 auto; padding: 48px 22px 64px; }
+    header { margin-bottom: 28px; }
+    .eyebrow { color: var(--blue); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 750; }
+    h1 { margin: 6px 0; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.04em; }
+    .intro { color: var(--muted); max-width: 700px; margin: 0; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 22px; box-shadow: 0 8px 28px #17243a0a; margin: 18px 0; }
+    .grid { display: grid; grid-template-columns: repeat(5, minmax(125px, 1fr)); gap: 14px; align-items: end; }
+    label { display: block; color: #435166; font-size: 13px; font-weight: 650; }
+    input { width: 100%; margin-top: 6px; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; color: var(--ink); background: white; }
+    button { padding: 11px 17px; border: 0; border-radius: 8px; color: white; background: var(--blue); font: inherit; font-weight: 700; cursor: pointer; }
+    button:disabled { opacity: .6; cursor: wait; }
+    .api { margin-top: 16px; }
+    .hint, .note { color: var(--muted); font-size: 13px; }
+    #status { min-height: 24px; margin: 14px 0 0; color: var(--muted); }
+    .error { color: #b42318 !important; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; white-space: nowrap; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+    td:first-child { font-weight: 700; }
+    .best { color: #16734b; font-weight: 750; }
+    h2 { margin: 0 0 14px; font-size: 19px; }
+    #results, #vm-info { display: none; }
+    @media (max-width: 790px) { .grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); } .grid button { grid-column: 1 / -1; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Scheduling experiment</div>
+    <h1>Cloud Task Scheduler</h1>
+    <p class="intro">Compare FCFS, Round Robin, Genetic Algorithm, Particle Swarm, and hybrid GA‑PSO on the same generated workload.</p>
+  </header>
+  <section class="panel" aria-labelledby="run-title">
+    <h2 id="run-title">Configure a run</h2>
+    <form id="run-form">
+      <div class="grid">
+        <label>Tasks<input name="tasks" type="number" min="1" max="100" value="30" required></label>
+        <label>Virtual machines<input name="vms" type="number" min="1" max="20" value="5" required></label>
+        <label>Search iterations<input name="iterations" type="number" min="1" max="150" value="60" required></label>
+        <label>Population<input name="population" type="number" min="4" max="40" value="20" required></label>
+        <label>Random seed<input name="seed" type="number" min="0" value="42" required></label>
+        <button id="run-button" type="submit">Run comparison</button>
+      </div>
+      <div class="api">
+        <label for="api-url">Render API URL</label>
+        <input id="api-url" type="url" placeholder="https://your-service.onrender.com" required>
+        <div class="hint">Paste the URL of your Render web service. It is saved in this browser.</div>
+      </div>
+      <p id="status" role="status"></p>
+    </form>
+  </section>
+  <section id="results" class="panel">
+    <h2>Results</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Algorithm</th><th>Makespan (s)</th><th>Load imbalance (s)</th><th>Energy proxy (J)</th><th>Fitness</th></tr></thead>
+      <tbody id="result-rows"></tbody>
+    </table></div>
+    <p id="energy-note" class="note"></p>
+  </section>
+  <section id="vm-info" class="panel"><h2>Generated virtual machines</h2><div id="vm-list" class="hint"></div></section>
+</main>
+<script>
+  const form = document.querySelector('#run-form');
+  const apiInput = document.querySelector('#api-url');
+  const status = document.querySelector('#status');
+  const button = document.querySelector('#run-button');
+  apiInput.value = localStorage.getItem('scheduler-api-url') || '';
+  apiInput.addEventListener('change', () => localStorage.setItem('scheduler-api-url', apiInput.value.trim().replace(/\/$/, '')));
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const base = apiInput.value.trim().replace(/\/$/, '');
+    if (!base) { status.textContent = 'Enter the Render API URL first.'; status.className = 'error'; return; }
+    localStorage.setItem('scheduler-api-url', base);
+    const data = Object.fromEntries(new FormData(form).entries());
+    for (const key of Object.keys(data)) data[key] = Number(data[key]);
+    button.disabled = true;
+    status.className = '';
+    status.textContent = 'Running the five scheduling algorithms…';
+    try {
+      const response = await fetch(`${base}/api/simulate`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.detail || `Request failed (${response.status})`);
+      const best = Math.min(...result.results.map(row => row.fitness));
+      document.querySelector('#result-rows').innerHTML = result.results.map(row => `<tr><td>${row.algorithm}</td><td>${row.makespan_seconds.toFixed(4)}</td><td>${row.load_imbalance_seconds.toFixed(4)}</td><td>${row.energy_proxy_joules.toFixed(2)}</td><td class="${row.fitness === best ? 'best' : ''}">${row.fitness.toFixed(6)}</td></tr>`).join('');
+      document.querySelector('#energy-note').textContent = result.energy_note;
+      document.querySelector('#vm-list').textContent = result.vms.map(vm => `VM ${vm.vm_id}: ${vm.mips.toLocaleString()} MIPS`).join('  ·  ');
+      document.querySelector('#results').style.display = 'block';
+      document.querySelector('#vm-info').style.display = 'block';
+      status.textContent = `Completed: ${result.task_count} tasks, ${result.vm_count} VMs, seed ${result.seed}.`;
+    } catch (error) {
+      status.textContent = `Could not run comparison: ${error.message}. Check that the Render service is live and the URL is correct.`;
+      status.className = 'error';
+    } finally { button.disabled = false; }
+  });
+</script>
+</body>
+</html>
+
