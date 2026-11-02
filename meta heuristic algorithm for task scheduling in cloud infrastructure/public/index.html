@@ -55,7 +55,7 @@
       </div>
       <div class="api">
         <label for="api-url">Render API URL</label>
-        <input id="api-url" type="url" placeholder="https://your-service.onrender.com" required>
+        <input id="api-url" type="url" placeholder="https://cloud-task-scheduler-api.onrender.com" required>
         <div class="hint">Paste the URL of your Render web service. It is saved in this browser.</div>
       </div>
       <p id="status" role="status"></p>
@@ -76,7 +76,7 @@
   const apiInput = document.querySelector('#api-url');
   const status = document.querySelector('#status');
   const button = document.querySelector('#run-button');
-  apiInput.value = localStorage.getItem('scheduler-api-url') || '';
+  apiInput.value = localStorage.getItem('scheduler-api-url') || 'https://cloud-task-scheduler-api.onrender.com';
   apiInput.addEventListener('change', () => localStorage.setItem('scheduler-api-url', apiInput.value.trim().replace(/\/$/, '')));
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
