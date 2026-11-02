@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cloud-task-scheduler-api
+    runtime: python
+    plan: free
+    rootDir: meta heuristic algorithm for task scheduling in cloud infrastructure
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+
