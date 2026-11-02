@@ -40,7 +40,7 @@ The repository includes a small browser interface in `public/` and a FastAPI end
 1. Push this project to a Git provider that both Render and Vercel can access.
 2. In Render, create a **Blueprint** from the repository and set the Blueprint file path to `meta heuristic algorithm for task scheduling in cloud infrastructure/render.yaml`. Render creates the `cloud-task-scheduler-api` web service from that config. After it deploys, copy its public URL, such as `https://cloud-task-scheduler-api.onrender.com`.
 3. In Vercel, import the same repository. Set the Root Directory to `meta heuristic algorithm for task scheduling in cloud infrastructure` and use the **Other** framework preset. `vercel.json` serves the static files from `public/`; no build command or extra packages are needed.
-4. Open the Vercel URL, paste the Render URL into **Render API URL**, and run a comparison. The URL is saved in that browser.
+4. Open the Vercel URL and run a comparison. The **Render API URL** is prefilled for visitors and can be changed if you host the API elsewhere.
 
 The API is public and has no sign-in. Request limits keep each run bounded (up to 100 tasks, 20 VMs, 150 iterations, and a population of 40). Render's free service may sleep while idle, so its first request after inactivity can take longer. Energy remains the simulator's illustrative proxy, not measured hardware consumption.
 
